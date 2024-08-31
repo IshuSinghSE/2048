@@ -1,0 +1,357 @@
+@font-face {
+  font-family: 'AnkhSanctuary';
+  src: url('AnkhSanctuary.ttf') format('truetype');
+}
+
+
+*, *::before, *::after {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  /* outline: 2px solid rebeccapurple; */
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+:root {
+  --bg-color: #fcfefe;
+  --bg-color-2: #ffe5e5;
+  --primary-color: #eaf6f6;
+  --secondary-color: #66bfbf;
+  --accent-color: #f76b8a;
+
+  --box-clr-1: #a8e6cf;
+  /* mint */
+  --box-clr-2: #fdffab;
+  /* lemon */
+  --box-clr-3: #ffd3b6;
+  /* peach */
+  --box-clr-4: #ffaaa5;
+  /* salmon */
+  --box-clr-5: #e3b7eb;
+  /* sky blue */
+  --box-clr-6: #9cde9c;
+  /* rose */
+  --box-clr-7: #fff7b3;
+  /* lavender */
+  --box-clr-8: #f7b3da;
+  /* bubblegum */
+  --box-clr-9: #b3d1ff;
+  /* seafoam */
+  --box-clr-10: #f8d9a8;
+  /* apricot */
+  --box-clr-11: #c3a6e8;
+  /* lilac */
+  --box-clr-12: #f5c1c1;
+  /* blush */
+
+  --box-text-1: hsl(158, 55%, 40%);
+  --box-text-2: hsl(61, 100%, 40%);
+  --box-text-3: hsl(24, 100%, 40%);
+  --box-text-4: hsl(3, 100%, 40%);
+  --box-text-5: hsl(290, 57%, 40%);
+  --box-text-6: hsl(120, 50%, 40%);
+  --box-text-7: hsl(54, 55%, 40%);
+  --box-text-8: hsl(328, 55%, 40%);
+  --box-text-9: hsl(216, 100%, 40%);
+  --box-text-10: hsl(37, 55%, 40%);
+  --box-text-11: hsl(268, 55%, 40%);
+  --box-text-12: hsl(6, 55%, 40%);
+
+  --text-clr: #392f2f;
+  --text-clr-1: #4ecdc4;
+  --text-clr-2: #f7fff7;
+}
+
+
+body {
+  width: 100vw;
+  height: 100vh;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  background-color: var(--bg-color);
+}
+
+.wrapper {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  justify-content: center;
+  align-items: center;
+  /* background-color: #a8e6cf; */
+}
+
+.container {
+  border-radius: 8px;
+  padding: 1rem;
+}
+
+.heading {
+  width: 480px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 0.7rem;
+  margin: 1rem 0;
+  /* background-color: orchid; */
+}
+
+.logo {
+
+  line-height: 2.2rem;
+  padding-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: end;
+}
+
+.title {
+  font-size: 4rem;
+  width: 100%;
+  color: #3d3737;
+  font-weight: bold;
+  /* margin-top: 1rem; */
+  font-family: 'Popins', sans-serif;
+}
+
+.about {
+  font-size: 1rem;
+  color: #392f2f;
+  font-weight: semi-bold;
+}
+
+.score {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  text-align: center;
+  gap: 0.5rem;
+  margin: 1rem
+}
+
+.score-container, .highscore-container {
+  width: 80px;
+  background-color: #e7f8f2;
+  font-weight: bold;
+  padding: 0.3rem;
+  border-radius: 8px;
+  color: var(--secondary-color);
+  line-height: 1.3rem;
+  border: var(--secondary-color) 1px solid;
+  box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.1);
+}
+
+.score-container {
+  color: var(--accent-color);
+  background-color: var(--bg-color-2);
+  border: var(--accent-color) 1px solid;
+
+}
+
+.gameboard {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  border-radius: 8px;
+  height: auto;
+  width: 30rem;
+  height: 30rem;
+  background-color: var(--primary-color);
+  border: var(--box-clr-1) 1px solid;
+  box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.1);
+}
+
+.cell {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: var(--box-text-1);
+  background-color: var(--box-clr-1);
+  border-radius: 8px;
+  margin: 0.5rem;
+  height: 100px;
+  width: 100px;
+  cursor: pointer;
+}
+
+
+/* Modal styles */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.4);
+  -webkit-backdrop-filter: blur(3px);
+  backdrop-filter: blur(3px);
+}
+
+.modal-content {
+  border-radius: 8px;
+  background-color: var(--primary-color);
+  margin: 10% auto;
+  /*20% from the top and centered */
+  padding: 20px;
+  border: 1px solid #888;
+  width: min(80%, 600px);
+  /* Could be more or less, depending on screen size */
+  text-align: center;
+  position: relative;
+  box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.3);
+}
+
+.modal-score {
+  font-size: 1.7rem;
+  font-weight: bold;
+  color: var(--secondary-color);
+  text-align: center;
+  margin: 1rem;
+  font-family: 'AnkhSanctuary';
+  text-shadow: 2px 2px 10px #66bfbfb3;
+
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 1rem;
+}
+
+.modal-title:nth-last-child() {
+  float: inline-end;
+}
+
+
+
+.status {
+  color: var(--accent-color);
+  writing-mode: vertical-lr;
+  text-orientation: upright;
+  font-weight: bold;
+  font-size: 2.5rem;
+  margin: 1rem;
+  text-transform: uppercase;
+  font-family: 'AnkhSanctuary';
+  text-shadow: 2px 2px 10px rgba(247, 107, 138, 0.7);
+  /* Add text shadow */
+}
+
+.reset-button {
+  color: var(--secondary-color);
+  float: right;
+  font-size: 2rem;
+  /* font-size: 28px; */
+  font-weight: bold;
+}
+
+.reset-button:hover,
+.reset-button:focus {
+  color: var(--accent-color);
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.close-button {
+  color: var(--secondary-color);
+  float: right;
+  font-size: 2rem;
+  /* font-size: 28px; */
+  font-weight: bold;
+}
+
+.close-button:hover,
+.close-button:focus {
+  color: var(--accent-color);
+  text-decoration: none;
+  cursor: pointer;
+}
+
+#play-again-button {
+  background-color: var(--primary-color);
+  color: var(--secondary-color);
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  cursor: pointer;
+  margin: 1rem;
+  outline: none;
+  border: 1px solid var(--secondary-color);
+  box-shadow: 1px 1px 5px 2px rgba(102, 191, 191, 0.3);
+  transition: all 0.3s ease;
+}
+
+#play-again-button:hover {
+  background-color: var(--secondary-color);
+  color: var(--primary-color);
+}
+
+/**
+ * This code performs a specific task.
+ * It takes the input from the selection and processes it accordingly.
+ * The output is then returned as the result.
+ */
+@keyframes new-tile {
+  0% {
+    transform: scale(0);
+    rotate: 0deg;
+  }
+
+  100% {
+    transform: scale(1);
+    rotate: 360deg;
+  }
+}
+
+.new-tile {
+  animation: new-tile 300ms ease-in-out, random-animation 500ms linear;
+}
+
+@keyframes rotate {
+  0% {
+    rotate: 0deg;
+  }
+
+  100% {
+    rotate: 360deg;
+  }
+}
+
+.rotate {
+  animation: rotate 300ms ease-in-out;
+}
+
+@keyframes merge-tile {
+  0% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.2);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+.merge-animation {
+  animation: merge-tile 0.3s ease-in-out;
+}
+
+.cell {
+  transition: transform 0.3s ease-in-out;
+}
+
+.moving {
+  transition: transform 1s ease-in-out;
+}

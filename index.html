@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <meta http-equiv="Content-Type" content="text/html">
+  <title>2048</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='style.css'>
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js" defer></script>
+  <script src='script.js' type="module"></script>
+</head>
+
+<body>
+  <div class="wrapper">
+    <div class="container">
+      <div class="heading">
+        <div class="logo">
+          <h1 class="title">2048</h1>
+          <p class="about">Can you make it to 2048.</p>
+        </div>
+
+        <div class="score">
+            <span class="reset-button">&#x21bb;</span>
+          <div class="score-container">
+            <p class="score-label">Score</>
+            <h2 class="score-text">0</h2>
+          </div>
+          <div class="highscore-container">
+            <p class="highscore-label">Best</>
+            <h2 class="highscore-text">0</h2>
+          </div>
+        </div>
+      </div>
+      <div class="gameboard"></div>
+    </div>
+
+    <div id="game-over-modal" class="modal">
+      <div class="modal-content">
+        <span class="close-button">&times;</span>
+      <div class="modal-header">
+        <div class="modal-title status">Game</div>
+        <div>
+          <p class="modal-score">Your Score</p>
+          <p class="modal-score">0</p>
+          <button id="play-again-button" class="try-again-button">Play Again</button>
+        </div>
+        <div class="modal-title status">Over</div>
+      </div>
+      </div>
+    </div>
+
+  </div>
+</body>
+
+</html>
