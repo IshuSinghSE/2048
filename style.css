@@ -3,12 +3,10 @@
   src: url('AnkhSanctuary.ttf') format('truetype');
 }
 
-
 *, *::before, *::after {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
-  /* outline: 2px solid rebeccapurple; */
   -webkit-user-select: none;
   user-select: none;
 }
@@ -19,31 +17,20 @@
   --primary-color: #eaf6f6;
   --secondary-color: #66bfbf;
   --accent-color: #f76b8a;
+  --text-clr: #392f2f;
 
   --box-clr-1: #a8e6cf;
-  /* mint */
   --box-clr-2: #fdffab;
-  /* lemon */
   --box-clr-3: #ffd3b6;
-  /* peach */
   --box-clr-4: #ffaaa5;
-  /* salmon */
   --box-clr-5: #e3b7eb;
-  /* sky blue */
   --box-clr-6: #9cde9c;
-  /* rose */
   --box-clr-7: #fff7b3;
-  /* lavender */
   --box-clr-8: #f7b3da;
-  /* bubblegum */
   --box-clr-9: #b3d1ff;
-  /* seafoam */
   --box-clr-10: #f8d9a8;
-  /* apricot */
   --box-clr-11: #c3a6e8;
-  /* lilac */
   --box-clr-12: #f5c1c1;
-  /* blush */
 
   --box-text-1: hsl(158, 55%, 40%);
   --box-text-2: hsl(61, 100%, 40%);
@@ -57,67 +44,63 @@
   --box-text-10: hsl(37, 55%, 40%);
   --box-text-11: hsl(268, 55%, 40%);
   --box-text-12: hsl(6, 55%, 40%);
-
-  --text-clr: #392f2f;
-  --text-clr-1: #4ecdc4;
-  --text-clr-2: #f7fff7;
 }
 
-
 body {
+  margin: 0;
+  padding: 0;
   width: 100vw;
   height: 100vh;
   font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
   background-color: var(--bg-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .wrapper {
-  height: 100%;
+  width: 100%;
+  max-width: 1000px;
+  padding: 1rem;
   display: flex;
   flex-direction: column;
   gap: 2rem;
   justify-content: center;
   align-items: center;
-  /* background-color: #a8e6cf; */
 }
 
 .container {
   border-radius: 8px;
   padding: 1rem;
+  width: 100%;
 }
 
 .heading {
-  width: 480px;
   display: flex;
-  align-items: center;
   justify-content: space-between;
+  align-items: center;
   padding: 0 0.7rem;
-  margin: 1rem 0;
-  /* background-color: orchid; */
+  margin-bottom: 1rem;
+  width: 100%;
 }
 
 .logo {
-
   line-height: 2.2rem;
-  padding-top: 1rem;
   display: flex;
   flex-direction: column;
   align-items: start;
-  justify-content: end;
 }
 
 .title {
   font-size: 4rem;
-  width: 100%;
   color: #3d3737;
   font-weight: bold;
-  /* margin-top: 1rem; */
   font-family: 'Popins', sans-serif;
 }
 
 .about {
   font-size: 1rem;
-  color: #392f2f;
+  color: var(--text-clr);
   font-weight: semi-bold;
 }
 
@@ -127,7 +110,6 @@ body {
   align-items: center;
   text-align: center;
   gap: 0.5rem;
-  margin: 1rem
 }
 
 .score-container, .highscore-container {
@@ -146,40 +128,37 @@ body {
   color: var(--accent-color);
   background-color: var(--bg-color-2);
   border: var(--accent-color) 1px solid;
-
 }
 
 .gameboard {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-  border-radius: 8px;
-  height: auto;
-  width: 30rem;
-  height: 30rem;
+  width: 90vw;
+  height: 90vw;
+  max-width: 500px;
+  max-height: 500px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(4, 1fr);
+  gap: 0.5rem;
   background-color: var(--primary-color);
   border: var(--box-clr-1) 1px solid;
   box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
 }
 
 .cell {
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 2.5rem;
+  font-size: 6vw;
   font-weight: bold;
   color: var(--box-text-1);
   background-color: var(--box-clr-1);
   border-radius: 8px;
-  margin: 0.5rem;
-  height: 100px;
-  width: 100px;
   cursor: pointer;
+  transition: transform 0.3s ease-in-out;
 }
 
-
-/* Modal styles */
+/* Modal Styles */
 .modal {
   display: none;
   position: fixed;
@@ -190,7 +169,6 @@ body {
   height: 100%;
   overflow: auto;
   background-color: rgba(0, 0, 0, 0.4);
-  -webkit-backdrop-filter: blur(3px);
   backdrop-filter: blur(3px);
 }
 
@@ -198,11 +176,9 @@ body {
   border-radius: 8px;
   background-color: var(--primary-color);
   margin: 10% auto;
-  /*20% from the top and centered */
   padding: 20px;
   border: 1px solid #888;
   width: min(80%, 600px);
-  /* Could be more or less, depending on screen size */
   text-align: center;
   position: relative;
   box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.3);
@@ -216,7 +192,6 @@ body {
   margin: 1rem;
   font-family: 'AnkhSanctuary';
   text-shadow: 2px 2px 10px #66bfbfb3;
-
 }
 
 .modal-header {
@@ -225,12 +200,6 @@ body {
   align-items: center;
   margin: 1rem;
 }
-
-.modal-title:nth-last-child() {
-  float: inline-end;
-}
-
-
 
 .status {
   color: var(--accent-color);
@@ -242,37 +211,19 @@ body {
   text-transform: uppercase;
   font-family: 'AnkhSanctuary';
   text-shadow: 2px 2px 10px rgba(247, 107, 138, 0.7);
-  /* Add text shadow */
 }
 
-.reset-button {
+.reset-button, .close-button {
   color: var(--secondary-color);
-  float: right;
   font-size: 2rem;
-  /* font-size: 28px; */
   font-weight: bold;
+  cursor: pointer;
+  transition: color 0.3s ease;
 }
 
 .reset-button:hover,
-.reset-button:focus {
+.close-button:hover {
   color: var(--accent-color);
-  text-decoration: none;
-  cursor: pointer;
-}
-
-.close-button {
-  color: var(--secondary-color);
-  float: right;
-  font-size: 2rem;
-  /* font-size: 28px; */
-  font-weight: bold;
-}
-
-.close-button:hover,
-.close-button:focus {
-  color: var(--accent-color);
-  text-decoration: none;
-  cursor: pointer;
 }
 
 #play-again-button {
@@ -295,63 +246,206 @@ body {
   color: var(--primary-color);
 }
 
-/**
- * This code performs a specific task.
- * It takes the input from the selection and processes it accordingly.
- * The output is then returned as the result.
- */
+/* Animations */
 @keyframes new-tile {
-  0% {
-    transform: scale(0);
-    rotate: 0deg;
-  }
+  0% { transform: scale(0); rotate: 0deg; }
+  100% { transform: scale(1); rotate: 360deg; }
+}
 
-  100% {
-    transform: scale(1);
-    rotate: 360deg;
-  }
+@keyframes rotate {
+  0% { rotate: 0deg; }
+  100% { rotate: 360deg; }
+}
+
+@keyframes merge-tile {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.2); }
+  100% { transform: scale(1); }
 }
 
 .new-tile {
   animation: new-tile 300ms ease-in-out, random-animation 500ms linear;
 }
 
-@keyframes rotate {
-  0% {
-    rotate: 0deg;
-  }
-
-  100% {
-    rotate: 360deg;
-  }
-}
-
 .rotate {
   animation: rotate 300ms ease-in-out;
 }
 
-@keyframes merge-tile {
-  0% {
-    transform: scale(1);
-  }
-
-  50% {
-    transform: scale(1.2);
-  }
-
-  100% {
-    transform: scale(1);
-  }
-}
-
 .merge-animation {
   animation: merge-tile 0.3s ease-in-out;
+  
+  
+  }
+  
+  /* Mobile devices (up to 480px) */
+@media only screen and (max-width: 480px) {
+  .title {
+    font-size: 2.5rem;
+  }
+  
+  .about {
+    font-size: 0.8rem;
+  }
+
+  .score-container, .highscore-container {
+    width: 60px;
+    padding: 0.2rem;
+    font-size: 0.8rem;
+  }
+
+  .gameboard {
+    width: 85vw;
+    height: 85vw;
+  }
+
+  .cell {
+    font-size: 8vw;
+  }
+
+  .modal-content {
+    width: 90%;
+    padding: 10px;
+  }
+
+  .modal-score {
+    font-size: 1.5rem;
+  }
+
+  .status {
+    font-size: 2rem;
+  }
+
+  #play-again-button {
+    font-size: 1rem;
+  }
 }
 
-.cell {
-  transition: transform 0.3s ease-in-out;
+/* Tablets and small laptops (481px to 768px) */
+@media only screen and (min-width: 481px) and (max-width: 768px) {
+  .title {
+    font-size: 3rem;
+  }
+
+  .about {
+    font-size: 0.9rem;
+  }
+
+  .score-container, .highscore-container {
+    width: 70px;
+    padding: 0.25rem;
+    font-size: 0.9rem;
+  }
+
+  .gameboard {
+    width: 80vw;
+    height: 80vw;
+  }
+
+  .cell {
+    font-size: 7vw;
+  }
+
+  .modal-content {
+    width: 85%;
+    padding: 15px;
+  }
+
+  .modal-score {
+    font-size: 1.6rem;
+  }
+
+  .status {
+    font-size: 2.3rem;
+  }
+
+  #play-again-button {
+    font-size: 1.05rem;
+  }
 }
 
-.moving {
-  transition: transform 1s ease-in-out;
+/* Medium laptops (769px to 1024px) */
+@media only screen and (min-width: 769px) and (max-width: 1024px) {
+  .title {
+    font-size: 3.5rem;
+  }
+
+  .about {
+    font-size: 1rem;
+  }
+
+  .score-container, .highscore-container {
+    width: 75px;
+    padding: 0.3rem;
+    font-size: 1rem;
+  }
+
+  .gameboard {
+    width: 70vw;
+    height: 70vw;
+  }
+
+  .cell {
+    font-size: 6.5vw;
+  }
+
+  .modal-content {
+    width: 75%;
+    padding: 20px;
+  }
+
+  .modal-score {
+    font-size: 1.65rem;
+  }
+
+  .status {
+    font-size: 2.4rem;
+  }
+
+  #play-again-button {
+    font-size: 1.08rem;
+  }
 }
+
+/* Large laptops and desktops (1025px and up) */
+@media only screen and (min-width: 1025px) {
+  .title {
+    font-size: 4rem;
+  }
+
+  .about {
+    font-size: 1rem;
+  }
+
+  .score-container, .highscore-container {
+    width: 80px;
+    padding: 0.3rem;
+    font-size: 1rem;
+  }
+
+  .gameboard {
+    width: 60vw;
+    height: 60vw;
+  }
+
+  .cell {
+    font-size: 6vw;
+  }
+
+  .modal-content {
+    width: 70%;
+    padding: 25px;
+  }
+
+  .modal-score {
+    font-size: 1.7rem;
+  }
+
+  .status {
+    font-size: 2.5rem;
+  }
+
+  #play-again-button {
+    font-size: 1.1rem;
+  }
+}
+  

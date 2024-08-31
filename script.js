@@ -413,7 +413,7 @@ addEventListener('DOMContentLoaded', () => {
         zeros++
       }
     }
-    console.log(zeros)
+    //console.log(zeros)
     if (zeros === 0) {
       document.removeEventListener('keydown', control)
       updateScore(score)
@@ -472,6 +472,7 @@ addEventListener('DOMContentLoaded', () => {
 
   resetButton.addEventListener('click', () => {
     localStorage.removeItem('board');
+    localStorage.removeItem('score');
     resetButton.classList.add('rotate');
     // Remove the moving class after the transition ends
     setTimeout(() => {
@@ -488,6 +489,54 @@ window.addEventListener('click', (event) => {
     hideModal();
   }
 });
+let startX, startY, endX, endY;
+
+gameboard.addEventListener('touchstart', handleTouchStart, false);
+gameboard.addEventListener('touchmove', handleTouchMove, false);
+gameboard.addEventListener('touchend', handleTouchEnd, false);
+
+function handleTouchStart(e) {
+  startX = e.touches[0].clientX;
+  startY = e.touches[0].clientY;
+}
+
+function handleTouchMove(e) {
+  endX = e.touches[0].clientX;
+  endY = e.touches[0].clientY;
+}
+
+function handleTouchEnd() {
+  if (!startX || !startY || !endX || !endY) return;
+
+  let deltaX = endX - startX;
+  let deltaY = endY - startY;
+
+  if (Math.abs(deltaX) > Math.abs(deltaY)) {
+    // Horizontal swipe
+    if (deltaX > 0) {
+      // Swipe right
+      slideTiles('right');
+    } else {
+      // Swipe left
+      slideTiles('left');
+    }
+  } else {
+    // Vertical swipe
+    if (deltaY > 0) {
+      // Swipe down
+      slideTiles('down');
+    } else {
+      // Swipe up
+      slideTiles('up');
+    }
+  }
+
+  // Reset values
+  startX = null;
+  startY = null;
+  endX = null;
+  endY = null;
+}
 
 /**
  * Sets the background color and text color of each cell in the board based on its value.
@@ -554,5 +603,6 @@ function addColor() {
 }
 
 init()
+
 
 });
