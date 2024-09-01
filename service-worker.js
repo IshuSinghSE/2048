@@ -1,4 +1,4 @@
-const CACHE_NAME = '2048-cache-v2'; // Update this with the new version
+const CACHE_NAME = '2048-cache-v3'; // Update this with the new version
 const CACHE_EXPIRATION_TIME = 30 * 24 * 60 * 60 * 1000; // 30 days in milliseconds
 const urlsToCache = [
   '/',
@@ -13,10 +13,6 @@ const urlsToCache = [
   '/AnkhSanctuary.ttf',
   '/assets/icons/icon-192x192.png',
   '/assets/icons/icon-512x512.png',
-  '/assets/screenshots/screenshot1-narrow.png',
-  '/assets/screenshots/screenshot1-wide.png',
-  '/assets/screenshots/screenshot2-narrow.png',
-  '/assets/screenshots/screenshot2-wide.png',
 ];
 
 self.addEventListener('install', event => {
@@ -47,34 +43,31 @@ self.addEventListener('activate', event => {
   );
 });
 
-self.addEventListener('fetch', event => {
+self.addEventListener('fetch', async event => {
   event.respondWith(
-    caches.open(CACHE_NAME).then(cache => {
-      return cache.match(event.request).then(response => {
-        if (response) {
-          // Check if cache is expired
-          return cache.match(event.request.url + '-timestamp').then(timestampResponse => {
-            if (timestampResponse) {
-              return timestampResponse.text().then(timestamp => {
-                const now = Date.now();
-                if (now - parseInt(timestamp) > CACHE_EXPIRATION_TIME) {
-                  // Cache expired, fetch new data and update cache
-                  return fetchAndUpdateCache(event, cache);
-                } else {
-                  // Cache is still valid, use it
-                  return response;
-                }
-              });
-            } else {
-              // No timestamp, fetch new data and update cache
-              return fetchAndUpdateCache(event, cache);
-            }
-          });
+    await caches.open(CACHE_NAME).then(async cache => {
+      const response = await cache.match(event.request);
+      if (response) {
+        // Check if cache is expired
+        const timestampResponse = await cache.match(event.request.url + '-timestamp');
+        if (timestampResponse) {
+          const timestamp = await timestampResponse.text();
+          const now = Date.now();
+          if (now - parseInt(timestamp) > CACHE_EXPIRATION_TIME) {
+            // Cache expired, fetch new data and update cache
+            return fetchAndUpdateCache(event, cache);
+          } else {
+            // Cache is still valid, use it
+            return response;
+          }
         } else {
-          // No cache, fetch and update cache
+          // No timestamp, fetch new data and update cache
           return fetchAndUpdateCache(event, cache);
         }
-      });
+      } else {
+        // No cache, fetch and update cache
+        return fetchAndUpdateCache(event, cache);
+      }
     })
   );
 });

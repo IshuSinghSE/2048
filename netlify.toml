@@ -1,0 +1,3 @@
+[build]
+  command = "node update-cache-name.js && npm run build"
+  publish = "public"

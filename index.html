@@ -3,13 +3,11 @@
 
 <head>
   <meta charset="utf-8">
-  <!-- <meta http-equiv='X-UA-Compatible' content='IE=edge'> -->
   <meta http-equiv="Content-Type" content="text/html">
   <meta name='viewport' content='width=device-width, initial-scale=1'>
   <title>2048</title>
   <link rel="manifest" href="manifest.webmanifest">
   <link rel="icon" type="image/png" href="assets/icon-512x512.png">
-  <!-- <link rel='stylesheet' type='text/css' media='screen' href='base.css'> -->
   <link rel='stylesheet' type='text/css' media='screen' href='style.css'>
   <link rel='stylesheet' type='text/css' media='screen' href='media-queries.css'>
   <link rel='stylesheet' type='text/css' media='screen' href='animation.css'>
@@ -62,19 +60,8 @@
   <div id="particles-js"></div>
 
   <script>
-    if ('serviceWorker' in navigator) {
-      window.addEventListener('load', () => {
-        navigator.serviceWorker.register('/service-worker.js')
-          .then(registration => {
-            localStorage.setItem('serviceWorkerRegistered', true);
-          }, err => {
-            console.log('ServiceWorker registration failed: ', err);
-          });
-      });
-    }
 
     // Initialize any DOM-related JavaScript here
-
     // Place service worker registration and update notification code here
     if ('serviceWorker' in navigator) {
       navigator.serviceWorker.register('/service-worker.js').then(registration => {
@@ -89,7 +76,10 @@
             }
           });
         });
-      });
+      })
+        .catch(error => {
+          console.error('Service Worker registration failed:', error);
+        });
 
       let refreshing;
       navigator.serviceWorker.addEventListener('controllerchange', () => {
@@ -117,6 +107,18 @@
       updateBar.appendChild(refreshButton);
       document.body.appendChild(updateBar);
     }
+
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/service-worker.js')
+          .then(registration => {
+            localStorage.setItem('serviceWorkerRegistered', true);
+          }, err => {
+            console.log('ServiceWorker registration failed: ', err);
+          });
+      });
+    }
+
 
   </script>
 

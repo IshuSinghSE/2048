@@ -124,9 +124,18 @@ addEventListener('DOMContentLoaded', () => {
         }
       }
     },
-    "retina_detect": true
+    "retina_detect": true,
   });
 
+  function supportsVibration() {
+    return "vibrate" in navigator;
+  }
+  
+  function triggerVibration(duration = 100) {
+    if (supportsVibration()) {
+      navigator.vibrate(duration); // Duration in milliseconds
+    }
+  }
 
   /** Initializes the game. */
   function init() {
@@ -195,6 +204,9 @@ addEventListener('DOMContentLoaded', () => {
         filteredLine[i] *= 2;
         score += filteredLine[i];
         let scoreIncrement = filteredLine[i]
+        // Trigger vibration
+        triggerVibration();
+
         if (scoreIncrement) {
           showTileScoreUpdate(cells[i], scoreIncrement)
           showScoreUpdateOnBoard(scoreIncrement, scoreDisplay, score)
@@ -256,6 +268,8 @@ addEventListener('DOMContentLoaded', () => {
         boardChanged = boardChanged || (board[i * SIZE + j].children[0].textContent != newLine[j]);
       }
     }
+    // Trigger vibration
+    triggerVibration(150);
 
     if (boardChanged) {
       // Add logic to spawn new tiles, check for win or game over, etc.
@@ -311,6 +325,8 @@ addEventListener('DOMContentLoaded', () => {
       if (board[i].children[0].innerHTML == 2048) {
         document.removeEventListener('keydown', control)
         showModal('You', 'Win', score);
+        // Trigger vibration
+        triggerVibration([100, 50, 300]);
       }
     }
   }
@@ -331,6 +347,8 @@ addEventListener('DOMContentLoaded', () => {
 
       textEl.classList.add('highscore')
       textEl.children[0].classList.add('highscore-font')
+      triggerVibration(300);
+
       launchConfetti()
 
       setTimeout(() => {
@@ -341,6 +359,8 @@ addEventListener('DOMContentLoaded', () => {
       let zeros = status.filter(num => num == 0).length
       if (zeros === 0) {
         document.removeEventListener('keydown', control)
+        // Trigger vibration
+        triggerVibration(300);
         showModal('Game', 'Over', score, false);
       }
     }
@@ -387,10 +407,14 @@ addEventListener('DOMContentLoaded', () => {
 
   function hideModal() {
     modal.style.display = "none";
+    triggerVibration();
+
   }
 
   playAgainButton.addEventListener('click', () => {
     hideModal();
+    // Trigger vibration
+    triggerVibration();
     localStorage.removeItem('board');
     init();
   });
@@ -399,6 +423,8 @@ addEventListener('DOMContentLoaded', () => {
     localStorage.removeItem('board');
     localStorage.removeItem('score');
     resetButton.classList.add('rotate');
+    // Trigger vibration
+    triggerVibration();
     // Remove the moving class after the transition ends
     setTimeout(() => {
       resetButton.classList.remove('rotate');
