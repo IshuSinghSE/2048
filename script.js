@@ -20,9 +20,9 @@ addEventListener('DOMContentLoaded', () => {
   let madeHighScore = false;
   let startX, startY, endX, endY;
 
-  gameboard.addEventListener('touchstart', handleTouchStart, false);
-  gameboard.addEventListener('touchmove', handleTouchMove, false);
-  gameboard.addEventListener('touchend', handleTouchEnd, false);
+  gameboard.addEventListener('touchstart', handleTouchStart, { passive: false });
+  gameboard.addEventListener('touchmove', handleTouchMove, { passive: false });
+  gameboard.addEventListener('touchend', handleTouchEnd, { passive: false });
 
   particlesJS('particles-js', {
     "particles": {
@@ -418,13 +418,21 @@ addEventListener('DOMContentLoaded', () => {
 
 
   function handleTouchStart(e) {
+    if (e.touches.length !== 1) return;
     startX = e.touches[0].clientX;
     startY = e.touches[0].clientY;
   }
 
   function handleTouchMove(e) {
+    if (e.touches.length !== 1) return;
     endX = e.touches[0].clientX;
     endY = e.touches[0].clientY;
+
+    const touchDiff = endY - startY;
+
+    if (touchDiff > 0 && window.scrollY === 0) {
+      e.preventDefault();
+    }
   }
 
   function handleTouchEnd() {
@@ -454,10 +462,10 @@ addEventListener('DOMContentLoaded', () => {
     }
 
     // Reset values
-    startX = null;
-    startY = null;
-    endX = null;
-    endY = null;
+    startX = 0;
+    startY = 0;
+    endX = 0;
+    endY = 0;
   }
 
   init()
