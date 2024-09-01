@@ -1,14 +1,17 @@
 @font-face {
-  font-family: 'AnkhSanctuary';
-  src: url('AnkhSanctuary.ttf') format('truetype');
+  font-family: "AnkhSanctuary";
+  src: url("AnkhSanctuary.ttf") format("truetype");
 }
 
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
   -webkit-user-select: none;
   user-select: none;
+  /* outline: 1px solid orchid; */
 }
 
 :root {
@@ -17,41 +20,65 @@
   --primary-color: #eaf6f6;
   --secondary-color: #66bfbf;
   --accent-color: #f76b8a;
+  /* Text Colors */
   --text-clr: #392f2f;
 
-  --box-clr-1: #a8e6cf;
-  --box-clr-2: #fdffab;
-  --box-clr-3: #ffd3b6;
-  --box-clr-4: #ffaaa5;
-  --box-clr-5: #e3b7eb;
-  --box-clr-6: #9cde9c;
-  --box-clr-7: #fff7b3;
-  --box-clr-8: #f7b3da;
-  --box-clr-9: #b3d1ff;
-  --box-clr-10: #f8d9a8;
-  --box-clr-11: #c3a6e8;
-  --box-clr-12: #f5c1c1;
+  /* Box Colors */
+  --box-clr-1: #ede0c7;
+  /* Pale Gold */
+  --box-clr-12: #f2cd8b;
+  /* Light Orange */
+  --box-clr-3: #ffd3b5;
+  /* Light Coral */
+  --box-clr-4: #f5c1c0;
+  /* Mint Green */
+  --box-clr-5: #c3a6e7;
+  /* Light Purple */
+  --box-clr-6: #e3b7ea;
+  /* Lavender */
+  --box-clr-7: #9cde9b;
+  /* Light Green */
+  --box-clr-8: #a8e6ce;
+  /* Light Salmon */
+  --box-clr-9: #b3d1fe;
+  /* Light Pink */
+  --box-clr-10: #ffaaa4;
+  /* Light Peach */
+  --box-clr-11: #f7b3d9;
+  /* Light Blue */
+  --box-clr-2: #f0e9a8;
+  /* Pale Yellow */
 
-  --box-text-1: hsl(158, 55%, 40%);
-  --box-text-2: hsl(61, 100%, 40%);
-  --box-text-3: hsl(24, 100%, 40%);
-  --box-text-4: hsl(3, 100%, 40%);
-  --box-text-5: hsl(290, 57%, 40%);
-  --box-text-6: hsl(120, 50%, 40%);
-  --box-text-7: hsl(54, 55%, 40%);
-  --box-text-8: hsl(328, 55%, 40%);
-  --box-text-9: hsl(216, 100%, 40%);
-  --box-text-10: hsl(37, 55%, 40%);
-  --box-text-11: hsl(268, 55%, 40%);
-  --box-text-12: hsl(6, 55%, 40%);
+  --box-text-1: hsl(39, 51%, 39%);
+  /* Pale Gold */
+  --box-text-12: hsl(38, 80%, 39%);
+  /* Light Orange */
+  --box-text-3: hsl(24, 100%, 39%);
+  /* Light Coral */
+  --box-text-4: hsl(6, 55%, 39%);
+  /* Mint Green */
+  --box-text-5: hsl(268, 55%, 39%);
+  /* Light Purple */
+  --box-text-6: hsl(290, 57%, 39%);
+  /* Lavender */
+  --box-text-7: hsl(120, 50%, 39%);
+  /* Light Green */
+  --box-text-8: hsl(158, 55%, 39%);
+  /* Light Salmon */
+  --box-text-9: hsl(216, 100%, 39%);
+  /* Light Pink */
+  --box-text-10: hsl(3, 100%, 39%);
+  /* Light Peach */
+  --box-text-11: hsl(328, 55%, 39%);
+  /* Light Blue */
+  --box-text-2: hsl(54, 55%, 39%);
+  /* Pale Yellow */
 }
 
 body {
-  margin: 0;
-  padding: 0;
   width: 100vw;
   height: 100vh;
-  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
   background-color: var(--bg-color);
   display: flex;
   justify-content: center;
@@ -59,19 +86,19 @@ body {
 }
 
 .wrapper {
-  width: 100%;
-  max-width: 1000px;
+  /* width:max(50%, 480px); */
+  width: fit-content;
+  /* max-width: 1000px; */
   padding: 1rem;
   display: flex;
   flex-direction: column;
-  gap: 2rem;
   justify-content: center;
   align-items: center;
 }
 
 .container {
   border-radius: 8px;
-  padding: 1rem;
+  padding: 0.5rem;
   width: 100%;
 }
 
@@ -79,7 +106,6 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 0.7rem;
   margin-bottom: 1rem;
   width: 100%;
 }
@@ -89,18 +115,31 @@ body {
   display: flex;
   flex-direction: column;
   align-items: start;
+  /* padding :0.5rem; */
+  height: fit-content;
 }
 
 .title {
-  font-size: 4rem;
-  color: #3d3737;
+  font-size: 5rem;
+  height: fit-content;
+  width: 100%;
+  padding: 0.8rem 0;
   font-weight: bold;
-  font-family: 'Popins', sans-serif;
+  font-family: "Popins", sans-serif;
+  background-image: linear-gradient(
+    to right,
+    var(--accent-color),
+    #feb47b
+  ); /* Define your gradient */
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
 }
 
 .about {
-  font-size: 1rem;
-  color: var(--text-clr);
+  font-size: 1.2rem;
+  font-family: "Popins", sans-serif;
+  color: var(--accent-color);
   font-weight: semi-bold;
 }
 
@@ -108,15 +147,16 @@ body {
   display: flex;
   justify-content: start;
   align-items: center;
-  text-align: center;
   gap: 0.5rem;
 }
 
-.score-container, .highscore-container {
-  width: 80px;
+.score-container,
+.highscore-container {
+  width: fit-content;
   background-color: #e7f8f2;
   font-weight: bold;
   padding: 0.3rem;
+  text-align: center;
   border-radius: 8px;
   color: var(--secondary-color);
   line-height: 1.3rem;
@@ -135,18 +175,24 @@ body {
   height: 90vw;
   max-width: 500px;
   max-height: 500px;
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: repeat(4, 1fr);
+  display: flex;
+  flex-wrap: wrap;
   gap: 0.5rem;
+  padding: 0.5rem 0 0.5rem 0.5rem;
   background-color: var(--primary-color);
-  border: var(--box-clr-1) 1px solid;
-  box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.1);
+  border: var(--box-clr-9) 1px solid;
+  box-shadow: 0 0 10px 2px rgba(0, 0, 0, 0.1);
   border-radius: 8px;
+}
+
+.gameboard > * {
+  margin: 0;
+  /* Ensure child elements have no margin */
 }
 
 .cell {
   display: flex;
+  width: calc(25% - 0.5rem);
   justify-content: center;
   align-items: center;
   font-size: 6vw;
@@ -156,6 +202,14 @@ body {
   border-radius: 8px;
   cursor: pointer;
   transition: transform 0.3s ease-in-out;
+  /* box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.1); */
+}
+
+.tile {
+  position: absolute;
+  width: 100px; /* Adjust according to your grid size */
+  height: 100px;
+  transition: transform 0.2s ease; /* Adjust duration for smooth sliding */
 }
 
 /* Modal Styles */
@@ -169,6 +223,7 @@ body {
   height: 100%;
   overflow: auto;
   background-color: rgba(0, 0, 0, 0.4);
+  -webkit-backdrop-filter: blur(3px);
   backdrop-filter: blur(3px);
 }
 
@@ -185,13 +240,17 @@ body {
 }
 
 .modal-score {
-  font-size: 1.7rem;
+  font-size: 2rem;
   font-weight: bold;
   color: var(--secondary-color);
   text-align: center;
   margin: 1rem;
-  font-family: 'AnkhSanctuary';
+  font-family: "AnkhSanctuary";
   text-shadow: 2px 2px 10px #66bfbfb3;
+}
+
+.modal-score:first-child {
+  font-size: min(3rem, 10vw);
 }
 
 .modal-header {
@@ -209,11 +268,12 @@ body {
   font-size: 2.5rem;
   margin: 1rem;
   text-transform: uppercase;
-  font-family: 'AnkhSanctuary';
+  font-family: "AnkhSanctuary";
   text-shadow: 2px 2px 10px rgba(247, 107, 138, 0.7);
 }
 
-.reset-button, .close-button {
+.reset-button,
+.close-button {
   color: var(--secondary-color);
   font-size: 2rem;
   font-weight: bold;
@@ -246,206 +306,45 @@ body {
   color: var(--primary-color);
 }
 
-/* Animations */
-@keyframes new-tile {
-  0% { transform: scale(0); rotate: 0deg; }
-  100% { transform: scale(1); rotate: 360deg; }
+.highscore {
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.1);
+  -webkit-backdrop-filter: blur(1px);
+  backdrop-filter: blur(1px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-@keyframes rotate {
-  0% { rotate: 0deg; }
-  100% { rotate: 360deg; }
+.highscore-font {
+  font-size: 5rem;
+  text-transform: uppercase;
+  color: var(--secondary-color);
+  font-family: "AnkhSanctuary";
+  font-weight: bold;
+  letter-spacing: 1rem;
+  text-shadow: 2px 2px 15px rgba(102, 191, 191, 0.95);
+  animation: achievement 5s forwards ease-in;
 }
 
-@keyframes merge-tile {
-  0% { transform: scale(1); }
-  50% { transform: scale(1.2); }
-  100% { transform: scale(1); }
-}
-
-.new-tile {
-  animation: new-tile 300ms ease-in-out, random-animation 500ms linear;
-}
-
-.rotate {
-  animation: rotate 300ms ease-in-out;
-}
-
-.merge-animation {
-  animation: merge-tile 0.3s ease-in-out;
-  
-  
+@keyframes achievement {
+  0% {
+    transform: translateY(100vh) scale(0.1) rotateY(0deg);
+    opacity: 0;
   }
-  
-  /* Mobile devices (up to 480px) */
-@media only screen and (max-width: 480px) {
-  .title {
-    font-size: 2.5rem;
+  50% {
+    transform: translateY(0) scale(1.3) rotateY(0deg);
+    opacity: 1;
   }
-  
-  .about {
-    font-size: 0.8rem;
-  }
-
-  .score-container, .highscore-container {
-    width: 60px;
-    padding: 0.2rem;
-    font-size: 0.8rem;
-  }
-
-  .gameboard {
-    width: 85vw;
-    height: 85vw;
-  }
-
-  .cell {
-    font-size: 8vw;
-  }
-
-  .modal-content {
-    width: 90%;
-    padding: 10px;
-  }
-
-  .modal-score {
-    font-size: 1.5rem;
-  }
-
-  .status {
-    font-size: 2rem;
-  }
-
-  #play-again-button {
-    font-size: 1rem;
+  100% {
+    transform: translateY(0) scale(1.3) rotateY(360deg);
+    opacity: 0.8;
   }
 }
 
-/* Tablets and small laptops (481px to 768px) */
-@media only screen and (min-width: 481px) and (max-width: 768px) {
-  .title {
-    font-size: 3rem;
-  }
-
-  .about {
-    font-size: 0.9rem;
-  }
-
-  .score-container, .highscore-container {
-    width: 70px;
-    padding: 0.25rem;
-    font-size: 0.9rem;
-  }
-
-  .gameboard {
-    width: 80vw;
-    height: 80vw;
-  }
-
-  .cell {
-    font-size: 7vw;
-  }
-
-  .modal-content {
-    width: 85%;
-    padding: 15px;
-  }
-
-  .modal-score {
-    font-size: 1.6rem;
-  }
-
-  .status {
-    font-size: 2.3rem;
-  }
-
-  #play-again-button {
-    font-size: 1.05rem;
-  }
-}
-
-/* Medium laptops (769px to 1024px) */
-@media only screen and (min-width: 769px) and (max-width: 1024px) {
-  .title {
-    font-size: 3.5rem;
-  }
-
-  .about {
-    font-size: 1rem;
-  }
-
-  .score-container, .highscore-container {
-    width: 75px;
-    padding: 0.3rem;
-    font-size: 1rem;
-  }
-
-  .gameboard {
-    width: 70vw;
-    height: 70vw;
-  }
-
-  .cell {
-    font-size: 6.5vw;
-  }
-
-  .modal-content {
-    width: 75%;
-    padding: 20px;
-  }
-
-  .modal-score {
-    font-size: 1.65rem;
-  }
-
-  .status {
-    font-size: 2.4rem;
-  }
-
-  #play-again-button {
-    font-size: 1.08rem;
-  }
-}
-
-/* Large laptops and desktops (1025px and up) */
-@media only screen and (min-width: 1025px) {
-  .title {
-    font-size: 4rem;
-  }
-
-  .about {
-    font-size: 1rem;
-  }
-
-  .score-container, .highscore-container {
-    width: 80px;
-    padding: 0.3rem;
-    font-size: 1rem;
-  }
-
-  .gameboard {
-    width: 60vw;
-    height: 60vw;
-  }
-
-  .cell {
-    font-size: 6vw;
-  }
-
-  .modal-content {
-    width: 70%;
-    padding: 25px;
-  }
-
-  .modal-score {
-    font-size: 1.7rem;
-  }
-
-  .status {
-    font-size: 2.5rem;
-  }
-
-  #play-again-button {
-    font-size: 1.1rem;
-  }
-}
-  

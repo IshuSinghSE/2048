@@ -1,0 +1,114 @@
+/* Animations */
+@keyframes new-tile {
+  0% {
+    transform: scale(0);
+    rotate: 0deg;
+  }
+
+  100% {
+    transform: scale(1);
+    rotate: 360deg;
+  }
+}
+
+@keyframes rotate {
+  0% {
+    rotate: 0deg;
+  }
+
+  100% {
+    rotate: 360deg;
+  }
+}
+
+@keyframes merge-tile {
+  0% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.2);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes scoreFade {
+  0% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translateY(-50px);
+    /* Moves upward */
+  }
+}
+
+@keyframes tileScoreFade {
+  0% {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  100% {
+    opacity: 0;
+    transform: scale(2);
+    /* Enlarges the text */
+  }
+}
+
+/* animations.css */
+
+/* Animation for score update */
+@keyframes scoreUpdate {
+  0% {
+    transform: scale(1);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.25);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.score-update-animation {
+  animation: scoreUpdate 0.5s ease-in-out;
+}
+
+
+.new-tile {
+  animation: new-tile 300ms ease-in-out, random-animation 500ms linear;
+}
+
+.rotate {
+  animation: rotate 300ms ease-in-out;
+}
+
+.merge-animation {
+  animation: merge-tile 0.3s ease-in-out;
+}
+
+/* For the score animation on the board */
+.score-update {
+  position: absolute;
+  font-size: 24px;
+  color: #ff4c4c;
+  animation: scoreFade 1.5s ease-out forwards;
+  pointer-events: none;
+}
+
+/* For the score animation in the middle of the tile */
+.tile-score-update {
+  position: absolute;
+  font-size: 2vw;
+  /* color: #000000; */
+  animation: tileScoreFade 800ms ease-out forwards;
+  pointer-events: none;
+}

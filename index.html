@@ -2,12 +2,17 @@
 <html lang="en">
 
 <head>
-  <meta charset='utf-8'>
-  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <meta charset="utf-8">
+  <!-- <meta http-equiv='X-UA-Compatible' content='IE=edge'> -->
   <meta http-equiv="Content-Type" content="text/html">
-  <title>2048</title>
   <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <title>2048</title>
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" type="image/png" href="assets/icon-512x512.png">
+  <!-- <link rel='stylesheet' type='text/css' media='screen' href='base.css'> -->
   <link rel='stylesheet' type='text/css' media='screen' href='style.css'>
+  <link rel='stylesheet' type='text/css' media='screen' href='media-queries.css'>
+  <link rel='stylesheet' type='text/css' media='screen' href='animation.css'>
   <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js" defer></script>
   <script src='script.js' type="module"></script>
 </head>
@@ -22,7 +27,7 @@
         </div>
 
         <div class="score">
-            <span class="reset-button">&#x21bb;</span>
+          <span class="reset-button">&#x21bb;</span>
           <div class="score-container">
             <p class="score-label">Score</>
             <h2 class="score-text">0</h2>
@@ -33,25 +38,39 @@
           </div>
         </div>
       </div>
-      <div class="gameboard"></div>
     </div>
+    <div class="gameboard"></div>
+  </div>
 
-    <div id="game-over-modal" class="modal">
-      <div class="modal-content">
-        <span class="close-button">&times;</span>
+  <div id="game-over-modal" class="modal">
+    <div class="modal-content">
+      <span class="close-button">&times;</span>
       <div class="modal-header">
         <div class="modal-title status">Game</div>
         <div>
           <p class="modal-score">Your Score</p>
           <p class="modal-score">0</p>
-          <button id="play-again-button" class="try-again-button">Play Again</button>
+          <button id="play-again-button" class="try-again-button" type="button">Play Again</button>
         </div>
         <div class="modal-title status">Over</div>
       </div>
-      </div>
     </div>
-
   </div>
+
+
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+      navigator.serviceWorker.register('/service-worker.js')
+        .then(registration => {
+        localStorage.setItem('serviceWorkerRegistered', true);
+        }, err => {
+        console.log('ServiceWorker registration failed: ', err);
+        });
+      });
+    }
+  </script>
+
 </body>
 
 </html>

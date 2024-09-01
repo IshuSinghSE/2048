@@ -1,0 +1,175 @@
+/* Mobile devices (up to 480px) */
+@media only screen and (max-width: 480px) {
+  .title {
+    font-size: 2.5rem;
+  }
+
+  .about {
+    font-size: 0.8rem;
+  }
+
+  .score-container,
+  .highscore-container {
+    padding: 0.2rem 0.4rem;
+    font-size: 0.8rem;
+  }
+
+  .gameboard {
+    width: 85vw;
+    height: 85vw;
+  }
+
+  .cell {
+    font-size: 8vw;
+  }
+
+  .modal-content {
+    width: 90%;
+    padding: 10px;
+  }
+
+  .modal-score {
+    font-size: 1.5rem;
+  }
+
+  .status {
+    font-size: 2rem;
+  }
+
+  #play-again-button {
+    font-size: 1rem;
+  }
+}
+
+/* Tablets and small laptops (481px to 768px) */
+@media only screen and (min-width: 481px) and (max-width: 768px) {
+  .title {
+    font-size: 3rem;
+  }
+
+  .about {
+    font-size: 0.9rem;
+  }
+
+  .score-container,
+  .highscore-container {
+    padding: 0.25rem 0.45rem;
+    font-size: 0.9rem;
+  }
+
+  .gameboard {
+    width: 80vw;
+    height: 80vw;
+  }
+
+  .cell {
+    font-size: 7vw;
+  }
+
+  .modal-content {
+    width: 85%;
+    padding: 15px;
+  }
+
+  .modal-score {
+    font-size: 1.6rem;
+  }
+
+  .status {
+    font-size: 2.3rem;
+  }
+
+  #play-again-button {
+    font-size: 1.05rem;
+  }
+}
+
+/* Medium laptops (769px to 1024px) */
+@media only screen and (min-width: 769px) and (max-width: 1024px) {
+  /* .title {
+    font-size: 3.5rem;
+  } */
+
+  .about {
+    font-size: 1.2rem;
+  }
+
+  .score-container,
+  .highscore-container {
+    padding: 0.3rem 0.5rem;
+    font-size: 1rem;
+  }
+
+  .gameboard {
+    margin-top: 1rem;
+    padding: 0.3rem 0 0.3rem 0.3rem;
+    width: 70vw;
+    height: 70vw;
+  }
+
+  .cell {
+    font-size: 6.5vw;
+  }
+
+  .modal-content {
+    width: 75%;
+    padding: 20px;
+  }
+
+  .modal-score {
+    font-size: 1.65rem;
+  }
+
+  .status {
+    font-size: 2.4rem;
+  }
+
+  #play-again-button {
+    font-size: 1.08rem;
+  }
+}
+
+/* Large laptops and desktops (1025px and up) */
+@media only screen and (min-width: 1025px) {
+  /* .title {
+    font-size: 4rem;
+  } */
+
+  .about {
+    font-size: 1rem;
+  }
+
+  .score-container,
+  .highscore-container {
+    padding: 0.3rem 0.5rem;
+    font-size: 1rem;
+  }
+
+  .gameboard {
+    margin-top: 1rem;
+
+    width: 60vw;
+    height: 60vw;
+  }
+
+  .cell {
+    font-size: 4vw;
+  }
+
+  .modal-content {
+    width: 70%;
+    padding: 25px;
+  }
+
+  .modal-score {
+    font-size: 1.7rem;
+  }
+
+  .status {
+    font-size: 2.5rem;
+  }
+
+  #play-again-button {
+    font-size: 1.1rem;
+  }
+}
