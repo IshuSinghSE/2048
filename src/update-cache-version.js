@@ -1,7 +1,7 @@
 import fs from 'fs';
 import path from 'path';
 
-const filePath = path.join(__dirname, 'service-worker.js');
+const filePath = path.join('service-worker.js');
 
 fs.readFile(filePath, 'utf8', (err, data) => {
   if (err) {

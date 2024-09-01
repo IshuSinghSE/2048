@@ -1,0 +1,17 @@
+{
+  "name": "2048",
+  "version": "1.0.0",
+  "description": "A modern web-based implementation of the classic 2048 puzzle game.",
+  "main": "script.js",
+  "type": "module",
+  "scripts": {
+    "build": "node src/update-cache-version.js && echo 'Build complete!🍁💮✨'"
+  },
+  "keywords": [],
+  "author": "IshuSinghSE",
+  "license": "ISC",
+  "dependencies": {
+    "fs": "^0.0.1-security",
+    "path": "^0.12.7"
+  }
+}

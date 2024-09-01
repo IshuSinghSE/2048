@@ -130,7 +130,7 @@ addEventListener('DOMContentLoaded', () => {
   function supportsVibration() {
     return "vibrate" in navigator;
   }
-  
+
   function triggerVibration(duration = 100) {
     if (supportsVibration()) {
       navigator.vibrate(duration); // Duration in milliseconds
