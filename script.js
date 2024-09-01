@@ -334,19 +334,19 @@ addEventListener('DOMContentLoaded', () => {
       // Horizontal swipe
       if (deltaX > 0) {
         // Swipe right
-        slideTiles('right');
+        move('right');
       } else {
         // Swipe left
-        slideTiles('left');
+        move('left');
       }
     } else {
       // Vertical swipe
       if (deltaY > 0) {
         // Swipe down
-        slideTiles('down');
+        move('down');
       } else {
         // Swipe up
-        slideTiles('up');
+        move('up');
       }
     }
 
