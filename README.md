@@ -1,8 +1,8 @@
-[![Netlify Status](https://api.netlify.com/api/v1/badges/236fd0e9-5b49-470a-8f9e-b57e2f89aaca/deploy-status)](https://app.netlify.com/sites/2048retro/deploys)
+
 
 ---
 
-# 2048 Game
+# 2048 Game [![Netlify Status](https://api.netlify.com/api/v1/badges/236fd0e9-5b49-470a-8f9e-b57e2f89aaca/deploy-status)](https://app.netlify.com/sites/2048retro/deploys)
 
 A modern web-based implementation of the classic 2048 puzzle game. This version includes responsive touch controls, smooth animations, local storage for saving progress, and a sleek UI.
 
