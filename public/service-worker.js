@@ -44,43 +44,46 @@ self.addEventListener('activate', event => {
 });
 
 self.addEventListener('fetch', event => {
-  event.respondWith(
-    caches.open(CACHE_NAME).then(cache => {
-      return cache.match(event.request).then(response => {
-        if (response) {
-          // Check if cache is expired
-          return cache.match(event.request.url + '-timestamp').then(timestampResponse => {
-            if (timestampResponse) {
-              return timestampResponse.text().then(timestamp => {
-                const now = Date.now();
-                if (now - parseInt(timestamp) > CACHE_EXPIRATION_TIME) {
-                  // Cache expired, fetch new data and update cache
-                  return fetch(event.request).then(networkResponse => {
-                    cache.put(event.request, networkResponse.clone());
-                    cache.put(event.request.url + '-timestamp', new Response(now.toString()));
-                    return networkResponse;
-                  });
-                } else {
-                  // Cache is still valid
-                  return response;
-                }
-              });
-            } else {
-              // No timestamp, return cached response
-              return response;
-            }
-          });
-        } else {
-          // No cached response, fetch from network
-          return fetch(event.request).then(networkResponse => {
-            cache.put(event.request, networkResponse.clone());
-            cache.put(event.request.url + '-timestamp', new Response(Date.now().toString()));
-            return networkResponse;
-          });
-        }
-      });
-    })
-  );
+  // Filter out requests with unsupported schemes
+  if (event.request.url.startsWith('http')) {
+    event.respondWith(
+      caches.open(CACHE_NAME).then(cache => {
+        return cache.match(event.request).then(response => {
+          if (response) {
+            // Check if cache is expired
+            return cache.match(event.request.url + '-timestamp').then(timestampResponse => {
+              if (timestampResponse) {
+                return timestampResponse.text().then(timestamp => {
+                  const now = Date.now();
+                  if (now - parseInt(timestamp) > CACHE_EXPIRATION_TIME) {
+                    // Cache expired, fetch new data and update cache
+                    return fetch(event.request).then(networkResponse => {
+                      cache.put(event.request, networkResponse.clone());
+                      cache.put(event.request.url + '-timestamp', new Response(now.toString()));
+                      return networkResponse;
+                    });
+                  } else {
+                    // Cache is still valid
+                    return response;
+                  }
+                });
+              } else {
+                // No timestamp, return cached response
+                return response;
+              }
+            });
+          } else {
+            // No cached response, fetch from network
+            return fetch(event.request).then(networkResponse => {
+              cache.put(event.request, networkResponse.clone());
+              cache.put(event.request.url + '-timestamp', new Response(Date.now().toString()));
+              return networkResponse;
+            });
+          }
+        });
+      })
+    );
+  }
 });
 
 // Function to fetch data and update cache
