@@ -1,19 +1,50 @@
 /* Mobile devices (up to 480px) */
 @media only screen and (max-width: 480px) {
   .title {
-    font-size: 2.5rem;
+    font-size: 4.5rem;
   }
 
   .about {
-    font-size: 0.8rem;
+    font-size: 1rem;
   }
+
+  .container{
+    margin-bottom: 1rem;
+  }
+
+  .highscore-font {
+  font-size: 1rem;}
 
   .score-container,
   .highscore-container {
     padding: 0.2rem 0.4rem;
     font-size: 0.8rem;
+    width: 35vw;
+  }
+  .score{
+    gap: 1.5rem;
   }
 
+  .score-label, .highscore-label{
+    font-size: 1rem;
+  }
+
+  .logo{
+    width: 100%;
+    text-align: center;
+    align-items: center;
+  }
+
+  .heading{
+    flex-direction: column;
+    gap: 1rem;
+    margin-top: -5rem 0 0 0;
+  }
+  .reset-button{
+    position: absolute;
+    top: 15vh;
+    right: 15vw;
+  }
   .gameboard {
     width: 85vw;
     height: 85vw;
@@ -44,17 +75,43 @@
 /* Tablets and small laptops (481px to 768px) */
 @media only screen and (min-width: 481px) and (max-width: 768px) {
   .title {
-    font-size: 3rem;
+    font-size: 7rem;
   }
 
   .about {
-    font-size: 0.9rem;
+    font-size: 1.5rem;
   }
+
+  .highscore-font {
+  font-size: 1.5rem;}
+
 
   .score-container,
   .highscore-container {
     padding: 0.25rem 0.45rem;
-    font-size: 0.9rem;
+    font-size: 1rem;
+    width: 30vw;
+    max-width: 200px;
+  }
+  .score{
+    gap: 1.5rem;
+  }
+
+  .score-label, .highscore-label{
+    font-size: 1.3rem;
+  }
+
+  .logo{
+    width: 100%;
+    text-align: center;
+    align-items: center;
+    line-height: 4rem;
+  }
+
+  .heading{
+    flex-direction: column;
+    gap: 1rem;
+    margin-top: -5rem 0 0 0;
   }
 
   .gameboard {
@@ -93,11 +150,14 @@
   .about {
     font-size: 1.2rem;
   }
-
+  .highscore-font {
+  font-size: 3rem;}
   .score-container,
   .highscore-container {
     padding: 0.3rem 0.5rem;
     font-size: 1rem;
+    width: 15vw;
+    max-width: 120px;
   }
 
   .gameboard {
@@ -138,11 +198,12 @@
   .about {
     font-size: 1rem;
   }
-
   .score-container,
   .highscore-container {
     padding: 0.3rem 0.5rem;
     font-size: 1rem;
+    width: 8vw;
+    max-width: 120px;
   }
 
   .gameboard {
