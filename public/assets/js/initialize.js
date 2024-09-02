@@ -50,9 +50,9 @@ export function addColor(BOARDSIZE, board) {
     let cellValue = parseInt(board[i].children[0].innerHTML);
     switch (cellValue) {
       case 0:
-        board[i].style.background = getComputedStyle(document.documentElement).getPropertyValue('--primary-color');
-        board[i].style.color = getComputedStyle(document.documentElement).getPropertyValue('--primary-color');
-        board[i].style.border = `1px solid ${getComputedStyle(document.documentElement).getPropertyValue('--primary-color')}`; // Add border
+        board[i].style.background = getComputedStyle(document.documentElement).getPropertyValue('--primary-clr-transparent');
+        board[i].style.color = getComputedStyle(document.documentElement).getPropertyValue('--primary-clr-transparent');
+        board[i].style.border = `1px solid ${getComputedStyle(document.documentElement).getPropertyValue('--primary-clr-transparent')}`; // Add border
         break;
       case 2:
         board[i].style.background = getComputedStyle(document.documentElement).getPropertyValue('--box-clr-1');

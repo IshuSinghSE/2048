@@ -1,5 +1,5 @@
 import { createBoard, createBoardFromState, addColor } from "./initialize.js";
-import { showScoreUpdateOnBoard, showTileScoreUpdate } from "./animation.js";
+import { showScoreUpdateOnBoard, showTileScoreUpdate, initializeParticles } from "./animation.js";
 
 addEventListener('DOMContentLoaded', () => {
   const gameboard = document.querySelector('.gameboard');
@@ -11,6 +11,78 @@ addEventListener('DOMContentLoaded', () => {
   const playAgainButton = document.getElementById('play-again-button');
   const closeButton = document.querySelector('.close-button');
   const resetButton = document.querySelector('.reset-button');
+
+  const hamburgerMenu = document.getElementById('hamburger-menu');
+  const dropdownMenu = document.getElementById('dropdown-menu');
+  const accordions = document.querySelectorAll('.accordion');
+
+  // Hamburger Menu Toggle
+  hamburgerMenu.addEventListener('click', () => {
+    hamburgerMenu.classList.toggle('menu-open');
+    dropdownMenu.classList.toggle('menu-open');
+  });
+
+  // Accordion Toggle
+  accordions.forEach(accordion => {
+    accordion.addEventListener('click', function () {
+      this.classList.toggle('accordion-open');
+    });
+  });
+
+  // Night Mode Toggle
+  const nightModeToggle = document.getElementById('night-mode-toggle');
+  nightModeToggle.addEventListener('change', function () {
+    if (this.checked) {
+      document.body.classList.add('night-mode');
+      localStorage.setItem('nightMode', 'enabled');
+    } else {
+      document.body.classList.remove('night-mode');
+      localStorage.setItem('nightMode', 'disabled');
+    }
+  });
+
+  // Vibration Toggle
+  const vibrationToggle = document.getElementById('vibration-toggle');
+  let enableVibration = true;
+  vibrationToggle.addEventListener('change', function () {
+    enableVibration = this.checked;
+    localStorage.setItem('vibration', enableVibration ? 'enabled' : 'disabled');
+  });
+
+  // Particles.js Toggle
+  const particlesToggle = document.getElementById('particles-toggle');
+  particlesToggle.addEventListener('change', function () {
+    const particlesElement = document.getElementById('particles-js');
+    if (this.checked) {
+      particlesElement.style.display = 'block';
+      localStorage.setItem('particles', 'enabled');
+    } else {
+      particlesElement.style.display = 'none';
+      localStorage.setItem('particles', 'disabled');
+    }
+  });
+
+  // Load preferences from localStorage
+  if (localStorage.getItem('nightMode') === 'enabled') {
+    document.body.classList.add('night-mode');
+    nightModeToggle.checked = true;
+  }
+
+  if (localStorage.getItem('vibration') === 'enabled') {
+    enableVibration = true;
+    vibrationToggle.checked = true;
+  } else {
+    enableVibration = false;
+  }
+
+  if (localStorage.getItem('particles') === 'enabled') {
+    particlesToggle.checked = true;
+  } else {
+    const particlesElement = document.getElementById('particles-js');
+    particlesElement.style.display = 'none';
+  }
+
+
 
   const SIZE = 4;
   const BOARDSIZE = SIZE * SIZE;
@@ -24,109 +96,6 @@ addEventListener('DOMContentLoaded', () => {
   gameboard.addEventListener('touchmove', handleTouchMove, { passive: false });
   gameboard.addEventListener('touchend', handleTouchEnd, { passive: false });
 
-  particlesJS('particles-js', {
-    "particles": {
-      "number": {
-        "value": 50,
-        "density": {
-          "enable": true,
-          "value_area": 800
-        }
-      },
-      "color": {
-        "value": "#f96b8a"
-      },
-      "shape": {
-        "type": "circle",
-        "stroke": {
-          "width": 0,
-          "color": "#000000"
-        }
-      },
-      "opacity": {
-        "value": 0.5,
-        "random": false,
-        "anim": {
-          "enable": false,
-          "speed": 1,
-          "opacity_min": 0.1,
-          "sync": false
-        }
-      },
-      "size": {
-        "value": 3,
-        "random": true,
-        "anim": {
-          "enable": false,
-          "speed": 40,
-          "size_min": 0.1,
-          "sync": false
-        }
-      },
-      "line_linked": {
-        "enable": true,
-        "distance": 150,
-        "color": "#fb6b8a",
-        "opacity": 0.4,
-        "width": 1
-      },
-      "move": {
-        "enable": true,
-        "speed": 2,
-        "direction": "none",
-        "random": false,
-        "straight": false,
-        "out_mode": "out",
-        "bounce": false,
-        "attract": {
-          "enable": false,
-          "rotateX": 600,
-          "rotateY": 1200
-        }
-      }
-    },
-    "interactivity": {
-      "detect_on": "canvas",
-      "events": {
-        "onhover": {
-          "enable": true,
-          "mode": "repulse"
-        },
-        "onclick": {
-          "enable": true,
-          "mode": "push"
-        },
-        "resize": true
-      },
-      "modes": {
-        "grab": {
-          "distance": 200,
-          "line_linked": {
-            "opacity": 1
-          }
-        },
-        "bubble": {
-          "distance": 200,
-          "size": 4,
-          "duration": 0.3,
-          "opacity": 1,
-          "speed": 3
-        },
-        "repulse": {
-          "distance": 100,
-          "duration": 0.4
-        },
-        "push": {
-          "particles_nb": 4
-        },
-        "remove": {
-          "particles_nb": 2
-        }
-      }
-    },
-    "retina_detect": true,
-  });
-
   function supportsVibration() {
     return "vibrate" in navigator;
   }
@@ -136,6 +105,9 @@ addEventListener('DOMContentLoaded', () => {
       navigator.vibrate(duration); // Duration in milliseconds
     }
   }
+
+  initializeParticles();
+
 
   /** Initializes the game. */
   function init() {
@@ -284,21 +256,18 @@ addEventListener('DOMContentLoaded', () => {
   function control(e) {
     switch (e.key) {
       case 'ArrowLeft':
-        // slideTiles('left');
         move('left')
         break;
       case 'ArrowRight':
-        // slideTiles('right');
         move('right')
         break;
       case 'ArrowUp':
-        // slideTiles('up');
         move('up')
         break;
       case 'ArrowDown':
-        // slideTiles('down');
         move('down')
         break;
+
     }
   }
 

@@ -5,7 +5,8 @@
   "main": "script.js",
   "type": "module",
   "scripts": {
-    "build": "node src/update-cache-version.js && echo 'Build complete!🍁💮✨'"
+    "build": "node src/update-cache-version.js",
+    "publish": "npm run build && git add . && git commit -m \"${npm_config_commit:-Publishing changes}\" && git push origin master"
   },
   "keywords": [],
   "author": "IshuSinghSE",

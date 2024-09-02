@@ -7,17 +7,64 @@
   <meta name='viewport' content='width=device-width, initial-scale=1'>
   <title>2048</title>
   <link rel="manifest" href="manifest.webmanifest">
-  <link rel="icon" type="image/png" href="assets/icon-512x512.png">
+  <link rel="icon" type="image/png" href="assets/icons/icon-512x512.png">
+  <link rel='stylesheet' type='text/css' media='screen' href='./assets/css/base.css'>
   <link rel='stylesheet' type='text/css' media='screen' href='./assets/css/style.css'>
+  <link rel='stylesheet' type='text/css' media='screen' href='./assets/css/menu.css'>
   <link rel='stylesheet' type='text/css' media='screen' href='./assets/css/animation.css'>
   <link rel='stylesheet' type='text/css' media='screen' href='./assets/css/media-queries.css'>
   <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js" defer></script>
   <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
 
+  <!-- Custom Scripts -->
   <script src='./assets/js/script.js' type="module"></script>
 </head>
 
 <body>
+  <!-- Add Hamburger Menu Icon -->
+  <div class="hamburger-menu" id="hamburger-menu">
+    <div class="bar"></div>
+    <div class="bar"></div>
+    <div class="bar"></div>
+  </div>
+
+  <!-- Dropdown Menu with Accordions and Switches -->
+  <div class="dropdown-menu" id="dropdown-menu">
+    <ul class="menu-items">
+      <!-- Home Link -->
+      <li><a href="/">Home</a></li>
+
+      <!-- Settings Accordion -->
+      <li class="accordion">
+        <a href="#" class="accordion-toggle">Settings</a>
+        <ul class="submenu">
+
+          <li>
+            <div class="toggle-item">
+              <label for="vibration-toggle">Vibration</label>
+              <input type="checkbox" id="vibration-toggle" class="toggle-switch">
+            </div>
+          </li>
+          <li>
+            <div class="toggle-item">
+              <label for="particles-toggle">Background</label>
+              <input type="checkbox" id="particles-toggle" class="toggle-switch">
+            </div>
+          </li>
+        </ul>
+      </li>
+      <li class="night-mode-option">
+        <div class="toggle-item">
+          <label for="night-mode-toggle">Night Mode</label>
+          <input type="checkbox" id="night-mode-toggle" class="toggle-switch">
+        </div>
+      </li>
+      <!-- About Link -->
+      <!-- <li><a href="#">About</a></li> -->
+    </ul>
+  </div>
+
+
   <div class="wrapper">
     <div class="container">
       <div class="heading">
@@ -57,6 +104,7 @@
     </div>
   </div>
 
+  <!-- particles-js -->
   <div id="particles-js"></div>
 
   <script>
@@ -64,7 +112,7 @@
     // Initialize any DOM-related JavaScript here
     // Place service worker registration and update notification code here
     if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.register('/service-worker.js').then(registration => {
+      navigator.serviceWorker.register('/public/service-worker.js').then(registration => {
         registration.addEventListener('updatefound', () => {
           const installingWorker = registration.installing;
           installingWorker.addEventListener('statechange', () => {
@@ -108,16 +156,16 @@
       document.body.appendChild(updateBar);
     }
 
-    if ('serviceWorker' in navigator) {
-      window.addEventListener('load', () => {
-        navigator.serviceWorker.register('/service-worker.js')
-          .then(registration => {
-            localStorage.setItem('serviceWorkerRegistered', true);
-          }, err => {
-            console.log('ServiceWorker registration failed: ', err);
-          });
-      });
-    }
+    // if ('serviceWorker' in navigator) {
+    //   window.addEventListener('load', () => {
+    //     navigator.serviceWorker.register('/service-worker.js')
+    //       .then(registration => {
+    //         localStorage.setItem('serviceWorkerRegistered', true);
+    //       }, err => {
+    //         console.log('ServiceWorker registration failed: ', err);
+    //       });
+    //   });
+    // }
 
 
   </script>

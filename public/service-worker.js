@@ -1,9 +1,11 @@
-const CACHE_NAME = '2048-cache-v3'; // Update this with the new version
+const CACHE_NAME = '2048-cache-v5'; // Update this with the new version
 const CACHE_EXPIRATION_TIME = 30 * 24 * 60 * 60 * 1000; // 30 days in milliseconds
 const urlsToCache = [
   '/',
   '/index.html',
+  '/assets/css/base.css',
   '/assets/css/style.css',
+  '/assets/css/menu.css',
   '/assets/css/animation.css',
   '/assets/css/media-queries.css',
   '/assets/js/script.js',

@@ -25,7 +25,7 @@ fs.readFile(filePath, 'utf8', (err, data) => {
     if (err) {
       console.error('Error writing service-worker.js:', err);
     } else {
-      console.log(`Updated CACHE_NAME to ${newCacheName} in service-worker.js`);
+      console.log(`Updated CACHE_NAME to ${newCacheName} in service-worker.js 🍁💮✨`);
     }
   });
 });

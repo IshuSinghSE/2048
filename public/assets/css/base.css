@@ -1,0 +1,77 @@
+@font-face {
+  font-family: "AnkhSanctuary";
+  src: url("assets/AnkhSanctuary.ttf") format("truetype");
+}
+
+*,
+*::before,
+*::after {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  -webkit-user-select: none;
+  user-select: none;
+  /* outline: 1px solid orchid; */
+}
+
+:root {
+  --bg-clr: #fcfefe;
+  --bg-clr-2: #ffe5e5;
+  --primary-clr: #eaf6f6;
+  --primary-clr-transparent: #eaf6f6a1;
+  --accent-clr-1: #f76b8a;
+  --accent-clr-2: #66bfbf;
+  /* Text Colors */
+  --text-clr: #392f2f;
+
+  /* Box Colors */
+  --box-clr-1: #ede0c7; /* Pale Gold */
+  --box-clr-2: #f0e9a8; /* Pale Yellow */
+  --box-clr-3: #ffd3b5; /* Light Coral */
+  --box-clr-4: #f5c1c0; /* Mint Green */
+  --box-clr-5: #c3a6e7; /* Light Purple */
+  --box-clr-6: #e3b7ea; /* Lavender */
+  --box-clr-7: #9cde9b; /* Light Green */
+  --box-clr-8: #a8e6ce; /* Light Salmon */
+  --box-clr-9: #b3d1fe; /* Light Pink */
+  --box-clr-10: #ffaaa4; /* Light Peach */
+  --box-clr-11: #f7b3d9; /* Light Blue */
+  --box-clr-12: #f2cd8b; /* Light Orange */
+
+  --box-text-1: hsl(39, 51%, 39%); /* Pale Gold */
+  --box-text-2: hsl(54, 55%, 39%); /* Pale Yellow */
+  --box-text-3: hsl(24, 100%, 39%); /* Light Coral */
+  --box-text-4: hsl(6, 55%, 39%); /* Mint Green */
+  --box-text-5: hsl(268, 55%, 39%); /* Light Purple */
+  --box-text-6: hsl(290, 57%, 39%); /* Lavender */
+  --box-text-7: hsl(120, 50%, 39%); /* Light Green */
+  --box-text-8: hsl(158, 55%, 39%); /* Light Salmon */
+  --box-text-9: hsl(216, 100%, 39%); /* Light Pink */
+  --box-text-10: hsl(3, 100%, 39%); /* Light Peach */
+  --box-text-11: hsl(328, 55%, 39%); /* Light Blue */
+  --box-text-12: hsl(38, 80%, 39%); /* Light Orange */
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg-color: #2c2c2c;
+    --text-color: #ffffff;
+    --primary-color: #444444;
+    --secondary-color: #66bfbf;
+    --accent-color: #f76b8a;
+    --tile-color: #555555;
+    --tile-text-color: #ffffff;
+    /* Add more dark colors as needed */
+  }
+}
+
+.dark-mode {
+  --bg-color: #2c2c2c;
+  --text-color: #ffffff;
+  --primary-color: #444444;
+  --secondary-color: #66bfbf;
+  --accent-color: #f76b8a;
+  --tile-color: #555555;
+  --tile-text-color: #ffffff;
+  /* Add more dark mode colors */
+}
